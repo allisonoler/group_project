@@ -4,7 +4,30 @@ class Game:
         self.num_cards = num_cards
 
     def play (self):
-        print("playing game")
+        for roundNum in range(self.num_cards):
+            cardsPicked = []
+            for playerNum in range(self.num_players):
+                print("Player " + playerNum + ", pick a card.")
+                cardIsAvailable = False
+                while cardIsAvailable == False:
+                    print("Here are the cards you can pick:")
+                    print(self.players[playerNum].cards)
+                    pickedCard = int(input())
+                    cardIsAvailable = self.players[playerNum].checkCard()
+                    cardsPicked[playerNum] = pickedCard
+            highestRoundValue = max(cardsPicked)
+            numMaxPlayers = 0
+            for playerNum in range (self.num_players):
+                if cardsPicked[playerNum] == highestRoundValue:
+                    numMaxPlayers +=1
+            if numMaxPlayers >1:
+                for playerNum in range(self.num_players):
+                    if cardsPicked[playerNum] == highestRoundValue:
+                        self.players[playerNum].addPoints(1)
+            else:
+                for playerNum in range(self.num_players):
+                    if cardsPicked[playerNum] == highestRoundValue:
+                        self.players[playerNum].addPoints(2)
 
 
 print("Welcome to the pyramid game!")
