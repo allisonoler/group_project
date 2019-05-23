@@ -1,7 +1,9 @@
 class Player:
-    def __init__(self, numRounds):
+    def __init__(self, numRounds, player_number):
         self.cards = list(range(numRounds))
         self.points = 0
+        self.player_number = player_number
+
 
     def checkCard(self, cardNum):
         if cardNum in self.cards:

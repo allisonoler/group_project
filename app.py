@@ -6,11 +6,13 @@ class Game:
         self.num_cards = num_cards
         self.players = []
         for i in range(num_players):
-            player = Player(num_cards)
+            player = Player(num_cards, i + 1)
             self.players.append(player)
 
     def play (self):
         print("playing game")
+    def print_scores (self):
+        print("printing scores here")
 
 
 print("Welcome to the pyramid game!")
