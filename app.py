@@ -1,7 +1,13 @@
+from player import Player
+
 class Game:
     def __init__(self, num_players, num_cards):
         self.num_players = num_players
         self.num_cards = num_cards
+        self.players = []
+        for i in range(num_players):
+            player = Player(num_cards)
+            self.players.append(player)
 
     def play (self):
         for roundNum in range(self.num_cards):
