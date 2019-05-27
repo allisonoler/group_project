@@ -11,15 +11,15 @@ class Game:
 
     def play (self):
         for roundNum in range(self.num_cards):
-            cardsPicked = []
+            cardsPicked = [-1 for x in range(self.num_players)]
             for playerNum in range(self.num_players):
-                print("Player " + playerNum + ", pick a card.")
+                print("Player " + str(playerNum+1) + ", pick a card.")
                 cardIsAvailable = False
                 while cardIsAvailable == False:
                     print("Here are the cards you can pick:")
                     print(self.players[playerNum].cards)
                     pickedCard = int(input())
-                    cardIsAvailable = self.players[playerNum].checkCard()
+                    cardIsAvailable = self.players[playerNum].checkCard(pickedCard)
                     cardsPicked[playerNum] = pickedCard
             highestRoundValue = max(cardsPicked)
             numMaxPlayers = 0
@@ -30,10 +30,12 @@ class Game:
                 for playerNum in range(self.num_players):
                     if cardsPicked[playerNum] == highestRoundValue:
                         self.players[playerNum].addPoints(1)
+                print("There was a tie, each player in the tie received one point.")
             else:
                 for playerNum in range(self.num_players):
                     if cardsPicked[playerNum] == highestRoundValue:
                         self.players[playerNum].addPoints(2)
+                        print("Player " + str(playerNum + 1) + " won!")
 
 
 print("Welcome to the pyramid game!")
