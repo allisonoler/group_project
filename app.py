@@ -9,6 +9,11 @@ class Game:
             player = Player(num_cards, i + 1)
             self.players.append(player)
 
+    def print_leaderboard(self):
+        self.players.sort(key=lambda player: player.score, reverse=True)
+        for place, player in enumerate(self.players, start=1):
+            print("{}: Player {} {} points".format(place, player.player_number, player.points))
+
     def play (self):
         for roundNum in range(self.num_cards):
             cardsPicked = [-1 for x in range(self.num_players)]
