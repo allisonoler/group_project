@@ -41,6 +41,7 @@ class Game:
                     if cardsPicked[playerNum] == highestRoundValue:
                         self.players[playerNum].addPoints(2)
                         print("Player " + str(playerNum + 1) + " won!")
+        self.print_leaderboard()
 
 
 print("Welcome to the pyramid game!")
