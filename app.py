@@ -1,5 +1,6 @@
 from player import Player
 
+#This is the pyramid game!
 class Game:
     def __init__(self, num_players, num_cards):
         self.num_players = num_players
